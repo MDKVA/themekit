@@ -33,17 +33,18 @@ npm install @mdkva/themekit
 ## **🌐 Usage**
 
 ```html
-<link rel="stylesheet" href="/node_modules/@mdkva/themekit/style.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdkva/themekit/style.css">
+   
+  <button id="toggleTheme">Toggle Theme</button>
 
-<script type="module">
-  import { toggleTheme } from "@mdkva/themekit";
+  <script type="module">
+    import { toggleTheme, setTheme } from "https://cdn.jsdelivr.net/npm/@mdkva/themekit/themekit.js";
 
-  document.getElementById("toggleBtn").onclick = () => {
-    toggleTheme();
-  };
-</script>
-
-<button id="toggleBtn">Toggle Theme</button>
+    document.getElementById("toggleTheme").addEventListener("click", () => {
+      const theme = toggleTheme();
+      console.log("Theme switched to:", theme);
+    });
+  </script>
 ```
 
 ## **🛠 Contributing**
@@ -59,6 +60,7 @@ Contributions are welcome!
 * **npm Package:** [https://www.npmjs.com/package/@mdkva/themekit](https://www.npmjs.com/package/@mdkva/themekit)
 * **Company Website:** [https://mdkva.com](https://mdkva.com)
 * **Contact:** [contact@mdkva.com](mailto:contact@mdkva.com)
+* **Author:** [github.com/MDKDanyalk](https://github.com/MDKDanyalk)
 
 ---
 
