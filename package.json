@@ -1,0 +1,29 @@
+{
+  "name": "@mdkva/themekit",
+  "version": "0.1.0",
+  "description": "MDKVA ThemeKit provides simple, fast, and developer-friendly utilities for theme switching — including dark mode, light mode, and system-mode detection — designed for modern web applications.",
+  "license": "MIT",
+  "author": "MDKVA <contact@mdkva.com>",
+  "contributors": [
+    "M. Danyal Kayani <danyal@mdkva.com>"
+  ],
+  "type": "module",
+  "main": "themekit.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mdkva/themekit.git"
+  },
+  "homepage": "https://mdkva.com/apis/themekit/",
+  "keywords": [
+  "mdkva",
+  "theme",
+  "dark-mode",
+  "light-mode",
+  "theme-switcher",
+  "color-scheme",
+  "themekit"
+],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
