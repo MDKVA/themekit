@@ -33,32 +33,50 @@ npm install @mdkva/themekit
 ## **🌐 Usage**
 
 ```html
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdkva/themekit/style.css">
-   
-  <button id="toggleTheme">Toggle Theme</button>
+<!-- Optional: include default stylesheet -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdkva/themekit/style.css">
 
-  <script type="module">
-    import { toggleTheme, setTheme } from "https://cdn.jsdelivr.net/npm/@mdkva/themekit/themekit.js";
+<!-- Example button to toggle theme -->
+<button id="toggleTheme">Toggle Theme</button>
 
-    document.getElementById("toggleTheme").addEventListener("click", () => {
-      const theme = toggleTheme();
-      console.log("Theme switched to:", theme);
-    });
-  </script>
+<!-- Container for debugging / live theme output -->
+<div id="mdkva-themekit"></div>
+
+<script type="module">
+  // Import ThemeKit
+  import { ThemeKit } from "https://cdn.jsdelivr.net/npm/@mdkva/themekit/themekit.js";
+
+  // Toggle theme on button click
+  document.getElementById("toggleTheme").addEventListener("click", () => {
+    const theme = ThemeKit.toggleTheme();
+    document.getElementById("mdkva-themekit").innerText = `Theme switched to: ${theme}`;
+  });
+
+  // Set a specific theme manually
+  ThemeKit.setTheme("dark");
+
+  // Get current theme
+  console.log("Current theme:", ThemeKit.getTheme());
+
+  // Listen to OS-level theme changes
+  ThemeKit.watchSystemTheme((newTheme) => {
+    console.log("OS theme changed to:", newTheme);
+  });
+</script>
 ```
-
-## **🛠 Contributing**
-
-Contributions are welcome!
-
-* GitHub: [https://github.com/mdkva/themekit](https://github.com/mdkva/themekit)
-* Submit issues, PRs, or improvements anytime.
 
 ---
 
-## **🔗 Links**
+## Contributions
+This project is open source and contributions are welcome!
+* GitHub Repository: [https://github.com/mdkva/themekit](https://github.com/mdkva/themekit)
+* Feel free to fork, submit issues, or create pull requests.
+
+---
+
+## Links
 * **npm Package:** [https://www.npmjs.com/package/@mdkva/themekit](https://www.npmjs.com/package/@mdkva/themekit)
-* **Company Website:** [https://mdkva.com](https://mdkva.com)
+* **Company Website:** [mdkva.com](https://mdkva.com/)
 * **Contact:** [contact@mdkva.com](mailto:contact@mdkva.com)
 * **Author:** [github.com/MDKDanyalk](https://github.com/MDKDanyalk)
 
