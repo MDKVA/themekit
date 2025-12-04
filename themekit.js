@@ -27,20 +27,16 @@ function safeSet(key, value) {
 }
 
 /* ---------------------------------------------------------
- * API: setTheme()
+ * Core functions
  * --------------------------------------------------------- */
-export function setTheme(theme) {
+function setTheme(theme) {
   if (!isBrowser || !theme) return;
 
   HTML.setAttribute('data-theme', theme);
   safeSet(STORAGE_KEY, theme);
 }
 
-/* ---------------------------------------------------------
- * API: getTheme()
- * Priority: saved → DOM → system
- * --------------------------------------------------------- */
-export function getTheme() {
+function getTheme() {
   if (!isBrowser) return 'light';
 
   const saved = safeGet(STORAGE_KEY);
@@ -52,10 +48,7 @@ export function getTheme() {
   return systemPrefers();
 }
 
-/* ---------------------------------------------------------
- * API: toggleTheme()
- * --------------------------------------------------------- */
-export function toggleTheme() {
+function toggleTheme() {
   if (!isBrowser) return 'light';
 
   const domTheme = HTML.getAttribute('data-theme');
@@ -66,21 +59,14 @@ export function toggleTheme() {
   return next;
 }
 
-/* ---------------------------------------------------------
- * API: systemPrefers()
- * --------------------------------------------------------- */
-export function systemPrefers() {
+function systemPrefers() {
   if (!isBrowser) return 'light';
-
   return window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light';
 }
 
-/* ---------------------------------------------------------
- * API: watchSystemTheme()
- * --------------------------------------------------------- */
-export function watchSystemTheme(callback) {
+function watchSystemTheme(callback) {
   if (!isBrowser || typeof callback !== 'function') return;
 
   const mq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -93,10 +79,7 @@ export function watchSystemTheme(callback) {
   }
 }
 
-/* ---------------------------------------------------------
- * API: initTheme()
- * --------------------------------------------------------- */
-export function initTheme() {
+function initTheme() {
   if (!isBrowser) return;
 
   const saved = safeGet(STORAGE_KEY);
@@ -109,3 +92,18 @@ export function initTheme() {
 
 // Auto-initialize when running in browser
 if (isBrowser) initTheme();
+
+/* ---------------------------------------------------------
+ * Export single camelCase object for modern usage
+ * --------------------------------------------------------- */
+export const ThemeKit = {
+  setTheme,
+  getTheme,
+  toggleTheme,
+  systemPrefers,
+  watchSystemTheme,
+  initTheme
+};
+
+// camelCase convention... for those that don't prefer PascalCase
+export const themeKit = ThemeKit;
