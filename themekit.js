@@ -29,6 +29,18 @@ function safeSet(key, value) {
 /* ---------------------------------------------------------
  * Core functions
  * --------------------------------------------------------- */
+
+function toggleTheme() {
+  if (!isBrowser) return 'light';
+
+  const domTheme = HTML.getAttribute('data-theme');
+  const current = domTheme || getTheme();
+  const next = current === 'dark' ? 'light' : 'dark';
+
+  setTheme(next);
+  return next;
+}
+
 function setTheme(theme) {
   if (!isBrowser || !theme) return;
 
@@ -46,17 +58,6 @@ function getTheme() {
   if (dom) return dom;
 
   return systemPrefers();
-}
-
-function toggleTheme() {
-  if (!isBrowser) return 'light';
-
-  const domTheme = HTML.getAttribute('data-theme');
-  const current = domTheme || getTheme();
-  const next = current === 'dark' ? 'light' : 'dark';
-
-  setTheme(next);
-  return next;
 }
 
 function systemPrefers() {
@@ -97,9 +98,9 @@ if (isBrowser) initTheme();
  * Export single camelCase object for modern usage
  * --------------------------------------------------------- */
 export const ThemeKit = {
+  toggleTheme,
   setTheme,
   getTheme,
-  toggleTheme,
   systemPrefers,
   watchSystemTheme,
   initTheme
