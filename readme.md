@@ -12,11 +12,12 @@ Perfect for UI developers, PWAs, dashboards, design systems, and frontend framew
 
 ## **✨ Features**
 
-* **`setTheme(mode)`** — Apply a theme (`light`, `dark`, or any custom mode).
-* **`getTheme()`** — Retrieve the currently active theme.
-* **`toggleTheme()`** — Automatically switch between `light` ↔ `dark`.
-* **`systemPrefers()`** — Detect OS-level theme preference.
-* **`watchSystemTheme(callback)`** — Listen for OS theme changes.
+* **`ThemeKit.toggleTheme()`** — Automatically switch between `light` ↔ `dark`.
+* **`ThemeKit.setTheme(mode)`** — Apply a theme (`light`, `dark`, or any custom mode).
+* **`ThemeKit.getTheme()`** — Retrieve the currently active theme.
+* **`ThemeKit.systemPrefers()`** — Detect OS-level theme preference.
+* **`ThemeKit.watchSystemTheme(callback)`** — Listen for OS theme changes.
+* **`ThemeKit.initTheme() `** — — Initializes the theme on page load using saved value or system preference, automatically setting the DOM attribute.
 * **Auto-persisted** theme across sessions.
 * **Zero dependencies**, fully ES module compatible.
 
@@ -78,7 +79,6 @@ This project is open source and contributions are welcome!
 * **npm Package:** [https://www.npmjs.com/package/@mdkva/themekit](https://www.npmjs.com/package/@mdkva/themekit)
 * **Company Website:** [mdkva.com](https://mdkva.com/)
 * **Contact:** [contact@mdkva.com](mailto:contact@mdkva.com)
-* **Author:** [github.com/MDKDanyalk](https://github.com/MDKDanyalk)
 
 ---
 
