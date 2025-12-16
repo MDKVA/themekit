@@ -1,35 +1,71 @@
-/*! MDKVA ThemeKit 
-/* Lightweight theme variable system for modern web apps */
+/*! MDKVA ThemeKit CSS
+/* Lightweight theme variable system designed to work with ThemeKit.js
+/* Uses the [data-theme="..."] attribute on the <html> element. */
 
 /* --------------------------------------------------
-   Light Mode (default)
--------------------------------------------------- */
-:root {
-  --bg: #ffffff;
-  --text: #000000;
-}
+ * 1. Global Setup and Transitions
+ * -------------------------------------------------- */
 
-/* --------------------------------------------------
-   Dark Mode
--------------------------------------------------- */
-[data-theme="dark"] {
-  --bg: #000000;
-  --text: #ffffff;
-}
-
-/* --------------------------------------------------
-   Apply Theme Variables
--------------------------------------------------- */
 html {
-  background: var(--bg);
-  color: var(--text);
+  /* Apply the variables */
+  background: var(--tk-bg);
+  color: var(--tk-text);
+
+  /* Add smooth transition for theme changes */
   transition: background 0.25s ease, color 0.25s ease;
 }
 
-/* body inherits theme */
 body {
+  /* Inherit colors from html to simplify body styling */
   margin: 0;
   padding: 0;
   background: inherit;
   color: inherit;
+}
+
+/* --------------------------------------------------
+ * 2. Theme Definitions (linked to ThemeKit.CONFIG.THEME_TOGGLE_LIST)
+ * -------------------------------------------------- */
+
+/* Default Theme: Light Mode */
+/* Applied to :root, which acts as the fallback theme for non-themed elements. */
+:root {
+  /* --tk prefix is used to prevent naming conflicts */
+  --tk-bg: #ffffff;
+  --tk-text: #000000;
+  --tk-link: #007bff;
+}
+
+/* Dark Mode Theme */
+/* Activated when ThemeKit sets <html data-theme="dark"> */
+[data-theme="dark"] {
+  --tk-bg: #000000;
+  --tk-text: #ffffff;
+  --tk-link: #90ee90;
+  /* A light green for dark mode links */
+}
+
+/* Custom Third Theme: Sepia Mode */
+/* Activated when ThemeKit sets <html data-theme="sepia"> */
+[data-theme="sepia"] {
+  --tk-bg: #f3e9d8;
+  --tk-text: #5c4033;
+  --tk-link: #b5651d;
+}
+
+/* --------------------------------------------------
+ * 3. System Preference Fallback (Optional, but recommended)
+ * This ensures the initial load before JS runs is correct.
+ * -------------------------------------------------- */
+
+/* If system prefers dark, apply dark variables before JS initializes,
+   BUT only if [data-theme] is NOT present (no saved theme). */
+@media (prefers-color-scheme: dark) {
+
+  :root:not([data-theme]) {
+    /* System Dark preference applied only when NO theme is set */
+    --tk-bg: #1f1f1f;
+    --tk-text: #e0e0e0;
+    --tk-link: #90ee90;
+  }
 }
